@@ -1,6 +1,6 @@
 import cv2
 
-IP_URL = "http://10.18.178.243:8080/video"  # kendi IP'ni yaz
+IP_URL = "http://10.18.178.243:8080/video"  
 
 cap = cv2.VideoCapture(IP_URL)
 if not cap.isOpened():
@@ -22,7 +22,7 @@ while True:
     faces = face_cascade.detectMultiScale(gray, 1.1, 5, minSize=(80, 80))
 
     if len(faces) > 0:
-        # en buyuk yuzu sec
+      
         x, y, w, h = max(faces, key=lambda r: r[2] * r[3])
         cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2)
         cv2.putText(frame, f"face_w_px={w}", (20, 40),
